@@ -1,13 +1,24 @@
-let display = document.getElementById("display");
+let expression = "";
+
+let expressionDisplay = document.getElementById("expression");
+let resultDisplay = document.getElementById("result");
 
 function appendValue(value){
-display.value += value;
+expression += value;
+expressionDisplay.textContent = expression;
 }
 
 function clearDisplay(){
-display.value = "";
+expression="";
+expressionDisplay.textContent="";
+resultDisplay.textContent="";
 }
 
 function calculate(){
-display.value = eval(display.value);
+try{
+let result = eval(expression);
+resultDisplay.textContent = result;
+}catch{
+resultDisplay.textContent="Error";
+}
 }
